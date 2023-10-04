@@ -3,8 +3,16 @@ const mongoose = require('mongoose');
 const optionSchema = new mongoose.Schema({
     text: {
         type: String,
-        require: ture,
+        require: true,
+    },
+    votes: {
+        type: Number,
+        require: false,
         default: 0
+    },
+    link_to_vote: {
+        type: String,
+        require: true
     }
 }, {
     timestamps: true
