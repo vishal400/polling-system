@@ -10,12 +10,12 @@ The Polling System is a web application that allows users to create polls, add o
 - Delete Questions
 
 ## Files and Folder Structure
-- config
-- controllers
-  - api
-- models
-- routes
-  - api
+📁 config
+📁 controllers
+   📁 api
+📁 models
+📁 routes
+   📁 api
 
 ## Getting Started
 To run the application locally, follow these steps:
