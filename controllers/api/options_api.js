@@ -69,3 +69,27 @@ module.exports.delete = async function (req, res) {
         });
     }
 };
+
+// add vote
+module.exports.addVote = async function (req, res) {
+    try {
+        const option = await Option.findById(req.params.id);
+        if(!option){
+            return res.status(404).json({
+                message: "Option not found"
+            })
+        }
+
+        option.votes = option.votes + 1;
+        await option.save();
+
+        return res.status(200).json({
+            message: "Vote successful"
+        })
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            message: "Internal Server Error",
+        });
+    }
+}
