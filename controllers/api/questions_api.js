@@ -29,3 +29,26 @@ module.exports.create = async function (req, res) {
         });
     }
 };
+
+// delete
+module.exports.delete = async function(req, res){
+    try {
+        const question = await Question.findByIdAndDelete(req.params.id);
+        if(!question){
+            return res.status(404).json({
+                message: "Question not found"
+            })
+        }
+
+        // delete options of the question
+        await Option.deleteMany({question: req.params.id});
+
+        return res.status(200).json({
+            message: "Question deleted successfully"
+        })
+    } catch (error) {
+        return res.status(500).json({
+            message: "Internal Server Error"
+        })
+    }
+}
